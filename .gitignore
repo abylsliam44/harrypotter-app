@@ -12,10 +12,6 @@ env/
 .venv/
 .ENV/
 
-# Django migrations
-*/migrations/*.py
-*/migrations/*.pyc
-
 # Environment variables
 .env
 *.env
