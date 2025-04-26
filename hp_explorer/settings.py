@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-2ovplj1&3(ear^irxg5a)5e+)xenx_8c3c**bp_21d=l&6u6%s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['harrypotter-wel6.onrender.com']
+ALLOWED_HOSTS = ['harrypotter-app.onrender.com']
 
 
 # Application definition
