@@ -110,6 +110,10 @@ hpotter_explorer/
   Source: [https://hp-api.onrender.com/api/characters](https://hp-api.onrender.com/api/characters)  
   Provides character data used for browsing and filtering.
 
+- **Open Trivia Database (OpenTDB)**  
+  Source: [https://opentdb.com/](https://opentdb.com/)  
+  Provides multiple-choice quiz questions used for the Harry Potter quiz feature.
+
 - **Hugging Face Inference API**  
   Used for AI-driven chat functionality with characters.
 
