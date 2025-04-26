@@ -23,9 +23,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# Static files
-staticfiles/
-
 # Node (если когда-то будешь делать фронтенд)
 node_modules/
 
