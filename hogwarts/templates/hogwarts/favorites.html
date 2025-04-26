@@ -1,0 +1,12 @@
+{% extends "hogwarts/base.html" %}
+
+{% load static %}
+
+{% block title %}Favorites{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">My Favorite Characters</h2>
+    <div class="text-center" id="favorites-list">Loading...</div>
+
+    <script src="{% static 'hogwarts/js/favorites-page.js' %}"></script>
+{% endblock %}

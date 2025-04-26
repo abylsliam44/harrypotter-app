@@ -1,0 +1,64 @@
+{% extends "hogwarts/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="hero-section">
+        <h2>Welcome to Hogwarts</h2>
+        <p>Explore the magical world of Harry Potter.</p>
+
+        <div class="cta-buttons">
+            <a href="{% url 'houses' %}" class="cta-btn">Discover Houses</a>
+            <a href="{% url 'characters' %}" class="cta-btn">Meet the Characters</a>
+            <a href="{% url 'chat_with_character' 'harry-potter' %}" class="cta-btn">Chat with Harry</a>
+        </div>
+    </div>
+
+    <div id="harryPotterCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://geekculture.co/wp-content/uploads/2023/02/Geek-Review-Hogwarts-Legacy-2.jpg" class="d-block w-100" alt="Hogwarts Castle">
+            </div>
+            <div class="carousel-item">
+                <img src="https://static1.moviewebimages.com/wordpress/wp-content/uploads/2023/04/harry-potter-characters.jpg" class="d-block w-100" alt="Harry Potter and Friends">
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn.mos.cms.futurecdn.net/hFxbSeEGgUHd9csPokBUBW-1200-80.jpg" class="d-block w-100" alt="Harry Potter and Friends - 2">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#harryPotterCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#harryPotterCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="about-section">
+        <h3 class="text-center">About Hogwarts</h3>
+        <p class="text-center">Hogwarts School of Witchcraft and Wizardry is one of the most renowned wizarding schools in the world, home to many magical beings and legendary wizards. Here, you can learn the magical arts and explore the mysteries of the wizarding world.</p>
+    </div>
+
+    <div class="fun-fact-section bg-light py-5">
+        <div class="container">
+            <h3>Did You Know?</h3>
+            <ul>
+                <li><strong>Harry's first broomstick:</strong> Harry Potter first flies on a Nimbus 2000 during his first year at Hogwarts.</li>
+                <li><strong>The Hogwarts Castle:</strong> The castle has hundreds of secret rooms, and it’s said that the ghosts and enchanted suits of armor roam the halls at night!</li>
+                <li><strong>Hermione's Time-Turner:</strong> Hermione used a Time-Turner to attend multiple classes at once during her third year at Hogwarts.</li>
+                <li><strong>House Points:</strong> House points are awarded to students for good behavior and achievement, but also deducted for rule-breaking!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="quiz-section py-5">
+        <div class="container">
+            <h3>Test Your Knowledge!</h3>
+            <p>How well do you know the wizarding world? Take our quiz to test your Harry Potter knowledge!</p>
+            <a href="{% url 'quiz' %}" class="cta-btn">Take the Quiz</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "hogwarts/base.html" %}
+
+{% block title %}Hogwarts Houses{% endblock %}
+
+{% block content %}
+<h2 class="text-center my-4">Hogwarts Houses</h2>
+
+<div class="houses-container">
+    {% for house in houses %}
+        <div class="house-card {{ house.name|slugify }}">
+            {% if house.name == "Gryffindor" %}
+                <img src="https://thenichollsworth.com/wp-content/uploads/2020/11/C0441055-AEE4-4C0D-8F43-A708DDEB6C3B-721x900.jpeg" alt="Gryffindor" class="house-image">
+            {% elif house.name == "Slytherin" %}
+                <img src="https://static.wikia.nocookie.net/sorting-hat/images/7/7a/Slytherin_house_badge.png/revision/latest?cb=20230121042356" alt="Slytherin" class="house-image">
+            {% elif house.name == "Hufflepuff" %}
+                <img src="https://static.wikia.nocookie.net/harrypotter/images/0/06/Hufflepuff_ClearBG.png/revision/latest?cb=20161020182518" alt="Hufflepuff" class="house-image">
+            {% elif house.name == "Ravenclaw" %}
+                <img src="https://static.wikia.nocookie.net/harrypotter/images/7/71/Ravenclaw_ClearBG.png/revision/latest?cb=20161020182442 alt="Ravenclaw" class="house-image">
+            {% else %}
+                <img src="https://static.wikia.nocookie.net/harrypotter/images/a/ae/Hogwartscrest.png/revision/latest?cb=20110806202805" alt="Hogwarts" class="house-image">
+            {% endif %}
+            
+            <div class="house-info">
+                <h3>{{ house.name }}</h3>
+                <p><strong>Colors:</strong> {{ house.colors }}</p>
+                <p><strong>Animal:</strong> {{ house.animal }}</p>
+                <p><strong>Founder:</strong> {{ house.founder }}</p>
+                <p><strong>Traits:</strong> {{ house.traits }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<style>
+    .houses-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .house-card {
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        width: 280px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .house-card:hover {
+        transform: scale(1.05);
+    }
+
+    .house-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background-color: white;
+    padding: 10px;
+}
+
+    .house-info {
+        padding: 15px;
+    }
+
+    .house-info h3 {
+        margin-top: 0;
+        font-family: 'Georgia', serif;
+        font-size: 24px;
+        color: #4d2c5c;
+    }
+
+    .house-info p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+{% endblock %}

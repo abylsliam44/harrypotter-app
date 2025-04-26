@@ -1,0 +1,66 @@
+{% extends "hogwarts/base.html" %}
+
+{% block title %}Characters{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Characters</h2>
+
+<form method="GET" class="form-inline" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+    <input type="text" name="search" placeholder="Search by name..." value="{{ search_query }}" class="form-control" style="padding: 6px 10px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+
+    <select name="house" class="form-control" style="padding: 6px 10px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="">All Houses</option>
+        <option value="Gryffindor" {% if selected_house == "Gryffindor" %}selected{% endif %}>Gryffindor</option>
+        <option value="Slytherin" {% if selected_house == "Slytherin" %}selected{% endif %}>Slytherin</option>
+        <option value="Ravenclaw" {% if selected_house == "Ravenclaw" %}selected{% endif %}>Ravenclaw</option>
+        <option value="Hufflepuff" {% if selected_house == "Hufflepuff" %}selected{% endif %}>Hufflepuff</option>
+    </select>
+
+    <button type="submit" class="btn btn-dark" style="padding: 6px 14px; font-size: 1rem; border-radius: 8px;">Filter</button>
+</form>
+
+<div class="characters-list">
+    {% for character in page_obj.object_list %}
+        <div class="card">
+            <a href="{% url 'character_detail' character.name|slugify %}">
+                <strong>{{ character.name }}</strong>
+            </a><br>
+            House: {{ character.house }}<br>
+            Patronus: {{ character.patronus }}<br>
+            {% if character.image %}
+                <img src="{{ character.image }}" alt="{{ character.name }}" width="100"><br>
+            {% endif %}
+            <button id="fav-{{ character.name }}" data-name="{{ character.name }}" onclick="toggleFavorite('{{ character.name }}')">
+                ☆ Add to Favorites
+            </button>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="pagination" style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+    {% if page_obj.has_previous %}
+        <a href="?page=1&search={{ search_query }}&house={{ selected_house }}">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}&search={{ search_query }}&house={{ selected_house }}">Prev</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+            {% if num == page_obj.number %}
+                <span style="padding: 8px 14px; background-color: #5a2a82; color: white; border-radius: 8px;">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}&search={{ search_query }}&house={{ selected_house }}">{{ num }}</a>
+            {% endif %}
+        {% elif num == 2 and page_obj.number > 4 %}
+            ...
+        {% elif num == page_obj.paginator.num_pages|add:"-1" and page_obj.number < page_obj.paginator.num_pages|add:"-3" %}
+            ...
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&search={{ search_query }}&house={{ selected_house }}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}&search={{ search_query }}&house={{ selected_house }}">Last</a>
+    {% endif %}
+</div>
+
+{% endblock %}

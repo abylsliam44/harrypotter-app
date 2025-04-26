@@ -1,0 +1,96 @@
+\{% extends 'hogwarts/base.html' %}
+
+{% block title %}Quiz Result{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    <div class="result-card">
+        <h2 class="result-title">✨ Your Result ✨</h2>
+        <p class="result-score">You scored <strong>{{ score }}</strong> out of 5!</p>
+        
+        {% if score >= 4 %}
+            <p class="result-message success">Brilliant! You truly know your Hogwarts lore!</p>
+        {% elif score == 3 %}
+            <p class="result-message medium">Not bad! You're on your way to becoming a true wizard!</p>
+        {% else %}
+            <p class="result-message low">🪄 Keep studying — the magic will come with practice!</p>
+        {% endif %}
+
+        <a href="{% url 'home' %}" class="result-btn">← Back to Home</a>
+    </div>
+</div>
+
+<style>
+    .result-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+        background: #f5f5f5;
+    }
+
+    .result-card {
+        background-color: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        max-width: 500px;
+        animation: fadeInUp 0.8s ease;
+    }
+
+    .result-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #4d2c5c;
+    }
+
+    .result-score {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #222;
+    }
+
+    .result-message {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .result-message.success {
+        color: #2e8b57;
+    }
+
+    .result-message.medium {
+        color: #d4a017;
+    }
+
+    .result-message.low {
+        color: #b22222;
+    }
+
+    .result-btn {
+        background-color: #4d2c5c;
+        color: white;
+        text-decoration: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .result-btn:hover {
+        background-color: #6a3a7c;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}

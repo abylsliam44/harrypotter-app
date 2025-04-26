@@ -1,0 +1,62 @@
+{% extends 'hogwarts/base.html' %}
+
+{% block title %}{{ character.name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ character.name }}</h2>
+
+    {% if character.image %}
+        <img src="{{ character.image }}" alt="{{ character.name }}" width="200">
+    {% endif %}
+
+    <ul>
+        <li><strong>House:</strong> {{ character.house }}</li>
+        <li><strong>Date of Birth:</strong> {{ character.dateOfBirth|default:"Unknown" }}</li>
+        <li><strong>Species:</strong> {{ character.species }}</li>
+        <li><strong>Gender:</strong> {{ character.gender }}</li>
+        <li><strong>Patronus:</strong> {{ character.patronus|default:"None" }}</li>
+        <li><strong>Alive:</strong> {{ character.alive|yesno:"Yes,No" }}</li>
+        <li><strong>Wand:</strong>
+            {% if character.wand.wood %}
+                {{ character.wand.wood }} wood, {{ character.wand.core }} core, {{ character.wand.length }} inches
+            {% else %}
+                Not available
+            {% endif %}
+        </li>
+    </ul>
+
+    <button id="favorite-btn" class="favorite-btn" data-character="{{ character.name }}">
+        {% if character.name in favorites %}
+            Remove from Favorites
+        {% else %}
+            Add to Favorites
+        {% endif %}
+    </button>
+
+    <hr>
+    <a href="{% url 'characters' %}">← Back to all characters</a>
+
+    <script>
+        const favoriteBtn = document.getElementById('favorite-btn');
+        const characterName = favoriteBtn.dataset.character;
+
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (favorites.includes(characterName)) {
+            favoriteBtn.textContent = "Remove from Favorites";
+        } else {
+            favoriteBtn.textContent = "Add to Favorites";
+        }
+
+        favoriteBtn.addEventListener('click', function () {
+            if (favorites.includes(characterName)) {
+                favorites = favorites.filter(item => item !== characterName);
+                favoriteBtn.textContent = "Add to Favorites";
+            } else {
+                favorites.push(characterName);
+                favoriteBtn.textContent = "Remove from Favorites";
+            }
+
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        });
+    </script>
+{% endblock %}

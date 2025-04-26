@@ -1,0 +1,11 @@
+{% extends 'hogwarts/base.html' %}
+
+{% block title %}Character Not Found{% endblock %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <h2>Character Not Found</h2>
+        <p>Sorry, we couldn't find the character "{{ name|title }}".</p>
+        <a href="{% url 'characters' %}">← Back to Characters</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'hogwarts/base.html' %}
+
+{% block title %}Harry Potter Quiz{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">✨ Harry Potter Quiz ✨</h2>
+    <form method="POST" class="quiz-form">
+        {% csrf_token %}
+        
+        {% for question in questions %}
+            <div class="quiz-card">
+                <p class="question-text">{{ forloop.counter }}. {{ question.question|safe }}</p>
+                <div class="options">
+                    {% for option in question.incorrect_answers %}
+                        <label class="option-label">
+                            <input type="radio" name="q{{ forloop.counter }}" value="{{ option }}">
+                            {{ option }}
+                        </label>
+                    {% endfor %}
+                    <label class="option-label">
+                        <input type="radio" name="q{{ forloop.counter }}" value="{{ question.correct_answer }}">
+                        {{ question.correct_answer }}
+                    </label>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="text-center mt-4">
+            <button type="submit" class="quiz-submit-btn">Submit</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    .quiz-form {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .quiz-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px 25px;
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
+    }
+
+    .quiz-card:hover {
+        transform: scale(1.02);
+    }
+
+    .question-text {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .option-label {
+        display: block;
+        background-color: #f1f1f1;
+        margin-bottom: 8px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 16px;
+    }
+
+    .option-label:hover {
+        background-color: #d9d9d9;
+    }
+
+    .option-label input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    .quiz-submit-btn {
+        background-color: #4d2c5c;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 25px;
+        transition: background-color 0.3s ease;
+    }
+
+    .quiz-submit-btn:hover {
+        background-color: #6a3a7c;
+    }
+</style>
+{% endblock %}

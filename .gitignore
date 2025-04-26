@@ -1,0 +1,41 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+
+# Django migrations
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Environment variables
+.env
+*.env
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Static files
+staticfiles/
+
+# Node (если когда-то будешь делать фронтенд)
+node_modules/
+
+# Test coverage reports
+htmlcov/
+.coverage
+
+# Local settings (если есть)
+local_settings.py
