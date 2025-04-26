@@ -1,14 +1,12 @@
-from http import client
+import os
+import requests
 from django.http import JsonResponse
-from slugify import slugify
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from slugify import slugify
 from hogwarts.models import House
-import requests
-import os 
 
-# Load Hugging Face API key from environment variables
-HF_API_KEY = os.getenv("HF_API_KEY")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 def home(request):
     return render(request, 'hogwarts/home.html')
@@ -64,25 +62,27 @@ def favorites(request):
 def chat_with_character(request, name):
     if request.method == 'POST':
         user_message = request.POST.get('message', '')
-        # Build prompt for Hugging Face chat model
-        prompt = f"Imagine you are {name} from Harry Potter. Respond to the following message as if you were {name}: {user_message}"
+        prompt = f"Imagine you are {name} from Harry Potter. Respond to this message: {user_message}"
 
         response = requests.post(
-            "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
+            "https://openrouter.ai/api/v1/chat/completions",
             headers={
-                "Authorization": f"Bearer {HF_API_KEY}",
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
                 "Content-Type": "application/json"
             },
-            json={"inputs": prompt}
+            json={
+                "model": "mistralai/mistral-7b-instruct",  # или gpt-3.5-turbo
+                "messages": [{"role": "user", "content": prompt}]
+            }
         )
 
         try:
             result = response.json()
-            print("HuggingFace raw:", result)
-            ai_reply = result[0]['generated_text']
+            print("OpenRouter raw:", result)
+            ai_reply = result['choices'][0]['message']['content']
         except Exception as e:
-            print("HuggingFace error:", e)
-            ai_reply = "Sorry, I'm not ready to respond yet. Please try again later!"
+            print("OpenRouter error:", e)
+            ai_reply = "Sorry, I couldn't generate a response right now."
 
         return JsonResponse({'reply': ai_reply})
 
@@ -111,6 +111,3 @@ def quiz(request):
         return render(request, 'hogwarts/quiz_result.html', {'score': score})
 
     return render(request, 'hogwarts/quiz.html', {'questions': questions})
-
-def favorites(request):
-    return render(request, 'hogwarts/favorites.html')
