@@ -106,6 +106,10 @@ hpotter_explorer/
 
 ## External APIs 📡
 
+- **OpenRouter AI API**  
+  Source: [https://openrouter.ai/](https://openrouter.ai/)  
+  Provides AI-generated responses for character chat functionality using models like GPT-3.5 and Mistral 7B.
+
 - **Harry Potter API**  
   Source: [https://hp-api.onrender.com/api/characters](https://hp-api.onrender.com/api/characters)  
   Provides character data used for browsing and filtering.
@@ -113,9 +117,6 @@ hpotter_explorer/
 - **Open Trivia Database (OpenTDB)**  
   Source: [https://opentdb.com/](https://opentdb.com/)  
   Provides multiple-choice quiz questions used for the Harry Potter quiz feature.
-
-- **Hugging Face Inference API**  
-  Used for AI-driven chat functionality with characters.
 
 ## License 📄
 
