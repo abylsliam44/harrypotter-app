@@ -1,15 +1,11 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "hp_explorer/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "50mb" }
-      }
+      { "src": "manage.py", "use": "@vercel/python" }
     ],
     "routes": [
       { "src": "/static/(.*)", "dest": "/static/$1" },
-      { "src": "/(.*)", "dest": "hp_explorer/wsgi.py" }
+      { "src": "/(.*)", "dest": "/manage.py" }
     ]
   }
   
