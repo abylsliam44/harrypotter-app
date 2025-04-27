@@ -79,3 +79,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # API Key
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
