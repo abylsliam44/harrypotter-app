@@ -153,7 +153,6 @@ This project is open-source and available for educational and non-commercial use
 Developed by Abylay Slamzhanov.
 
 Feel free to open an issue or submit a pull request to contribute to this project.
-
 Email: abylajslamzanov@gmail.com
 
 ---
