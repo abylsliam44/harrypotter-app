@@ -1,7 +1,9 @@
-# Harry Potter Explorer
+# Hogwarts Explorer 🪄
 
-Harry Potter Explorer is a Django web application that allows users to explore Hogwarts houses, browse Harry Potter characters, save favorites, take a themed quiz, and chat with AI-powered characters.
+**Hogwarts Explorer** is a web application where users can browse Harry Potter characters, explore Hogwarts houses, favorite their favorite characters, and chat with an AI bot role-playing Harry Potter characters.
 
+🌐 The project is deployed and available live at:  
+👉 [https://harrypotter-app.onrender.com](https://harrypotter-app.onrender.com)
 ## Features ✨
 
 - 🏠 **Houses Explorer**
@@ -51,36 +53,33 @@ git clone https://github.com/your-username/harrypotter-app.git
 cd harrypotter-app
 ```
 
-### 2. Create and activate a virtual environment:
-
-```bash
-python -m venv venv
-venv\Scripts\activate  # On Windows
-# source venv/bin/activate  # On Mac/Linux
-```
-
-### 3. Install the dependencies:
+### 2. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Create a .env file for secret keys:
+### 3. Configure environment variables (`.env`):
+- `DATABASE_URL`
+- `SECRET_KEY`
+- `OPENROUTER_API_KEY`
+
+### 4. Apply migrations:
 
 ```bash
-HF_API_KEY=your_huggingface_api_key
+python manage.py migrate
 ```
 
-### 5. Run the Django development server:
+### 5. Collect static files:
 
 ```bash
-HF_API_KEY=your_huggingface_api_key
+python manage.py collectstatic --noinput
 ```
 
-### Open your browser and go to:
+### 6. Run the server locally:
 
 ```bash
-http://127.0.0.1:8000/
+python manage.py runserver
 ```
 
 ## Project Structure 📂
