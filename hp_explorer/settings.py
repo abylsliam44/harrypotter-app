@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-2ovplj1&3(ear^irxg5a)5e+)xenx_8c3c**bp_21d=l&6u6%s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['harrypotter-app.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -124,12 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    BASE_DIR / "hogwarts" / "static",
+    os.path.join(BASE_DIR, 'hogwarts/static'),
 ]
-
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
