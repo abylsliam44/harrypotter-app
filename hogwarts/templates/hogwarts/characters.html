@@ -21,22 +21,21 @@
 
 <div class="characters-list">
     {% for character in page_obj.object_list %}
-        <div class="card">
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 250px; height: 450px; padding: 20px; border-radius: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); text-align: center;">
+            
             {% if character.image %}
-                <img src="{{ character.image }}" alt="{{ character.name }}" class="character-img">
-            {% else %}
-                <img src="{% static 'hogwarts/img/default-character.png' %}" alt="No image" class="character-img">
+                <img src="{{ character.image }}" alt="{{ character.name }}" style="width: 120px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
             {% endif %}
 
-            <div class="character-info">
-                <h5 class="character-name">
-                    <a href="{% url 'character_detail' character.name|slugify %}" style="text-decoration: none; color: #4d2c5c;">{{ character.name }}</a>
-                </h5>
-                <p><strong>House:</strong> {{ character.house|default:"Unknown" }}</p>
-                <p><strong>Patronus:</strong> {{ character.patronus|default:"Unknown" }}</p>
+            <div style="flex-grow: 1;">
+                <a href="{% url 'character_detail' character.name|slugify %}" style="display: block; font-weight: bold; margin-bottom: 8px; color: #4d2c5c; text-decoration: none;">
+                    {{ character.name }}
+                </a>
+                <p style="margin: 0;"><strong>House:</strong> {{ character.house|default:"Unknown" }}</p>
+                <p style="margin: 0;"><strong>Patronus:</strong> {{ character.patronus|default:"Unknown" }}</p>
             </div>
 
-            <button id="fav-{{ character.name }}" data-name="{{ character.name }}" onclick="toggleFavorite('{{ character.name }}')" class="btn btn-warning mt-2">
+            <button id="fav-{{ character.name }}" data-name="{{ character.name }}" onclick="toggleFavorite('{{ character.name }}')" class="btn btn-warning mt-2" style="margin-top: 10px;">
                 ☆ Add to Favorites
             </button>
         </div>
