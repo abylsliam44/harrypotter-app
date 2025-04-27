@@ -24,8 +24,8 @@
   - Send messages to Harry Potter characters.
   - Receive AI-generated responses via the Hugging Face Inference API.
 
-- 🧠 **Harry Potter Quiz**
-  - Answer 5 Harry Potter-related multiple-choice questions.
+- 🧠 **Movie Knowledge Quiz**
+  - Answer 5 multiple-choice questions about different movies and cinematography.
   - Instantly receive your quiz results.
 
 - 🔎 **Pagination**
@@ -142,7 +142,7 @@ The project was divided into several parts:
 
 - **Open Trivia Database (OpenTDB)**  
   Source: [https://opentdb.com/](https://opentdb.com/)  
-  Provides multiple-choice quiz questions used for the Harry Potter quiz feature.
+  Provides multiple-choice quiz questions used for the quiz feature.
 
 ## License 📄
 
