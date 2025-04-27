@@ -1,6 +1,6 @@
 {% extends "hogwarts/base.html" %}
 
-{% block title %}Chat with {{ name }}{% endblock %}
+{% block title %}Chat with Hogwarts AI{% endblock %}
 
 {% block content %}
     <h2 class="text-center">Chat with AI bot about Harry Potter!</h2>
@@ -32,7 +32,7 @@
             });
 
             const data = await response.json();
-            chatBox.innerHTML += `<p><strong>{{ name }}:</strong> ${data.reply}</p>`;
+            chatBox.innerHTML += `<p><strong>Hogwarts AI:</strong> ${data.reply}</p>`;
         });
     </script>
 {% endblock %}
