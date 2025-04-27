@@ -114,6 +114,28 @@ The project was divided into several parts:
 - Designing adaptive UI using Bootstrap 5.
 - Deploying to Render with PostgreSQL as a database.
 
+## Unique Approaches and Methodologies
+
+- Used Local Storage to manage user favorites without authentication.
+- Integrated dynamic AI chatbot responses without training custom models.
+- Combined Bootstrap with custom CSS for a clean and modern UI.
+- Ensured graceful fallback if character fields are missing.
+- Focused on mobile-first responsive design early in the process.
+
+## Trade-offs During Development
+
+- Chose client-side storage for favorites instead of database storage to keep the project lightweight and avoid adding authentication.
+- Pulled character data live from external API rather than storing it locally to ensure always up-to-date data with minimal database load.
+- Limited AI conversation to one character (Harry Potter) to prioritize stability over feature complexity.
+- Used a simple form-based filtering instead of a live search bar to reduce backend complexity.
+
+## Known Issues
+
+- Some characters from the API may lack images or have incomplete data.
+- No loading spinner currently shown while fetching character data.
+- Occasionally, AI bot responses may be less coherent due to OpenRouter external service behavior.
+- House filtering depends on exact house names; minor inconsistency might occur based on external API data.
+
 ## External APIs 📡
 
 - **OpenRouter AI API**  
