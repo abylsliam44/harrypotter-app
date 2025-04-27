@@ -85,22 +85,16 @@ python manage.py runserver
 ## Project Structure 📂
 
 ```plaintext
-hpotter_explorer/
-├── hogwarts/           # Django app for Hogwarts features
-│   ├── templates/      # HTML templates
-│   ├── static/         # Static files (CSS, JS)
-│   ├── urls.py         # App-specific URLs
-│   ├── views.py        # App views
-│   └── models.py       # Django models (House)
-├── hp_explorer/        # Project settings
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── manage.py           # Django management file
-├── db.sqlite3          # Local database
-├── .env                # Environment variables (excluded from Git)
-├── .gitignore          # Ignored files list
-└── README.md           # Project documentation
+hogwarts-explorer/
+├── hogwarts/             # Django app for houses, characters, chat views
+├── hp_explorer/          # Django project settings (wsgi, urls, settings)
+├── staticfiles/          # Collected static files after running collectstatic
+├── .gitignore            # Rules for ignoring unnecessary files in Git
+├── Procfile              # Command for starting the app on Render
+├── README.md             # Project documentation
+├── create_superuser.py   # Script for auto-creating Django superuser
+├── manage.py             # Django management utility
+└── requirements.txt      # List of Python dependencies
 ```
 ## Design and Development
 
