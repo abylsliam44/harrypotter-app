@@ -20,9 +20,9 @@
   - Add characters to your favorites list.
   - View and manage your favorites conveniently.
 
-- 💬 **AI Chat with Characters**
-  - Send messages to Harry Potter characters.
-  - Receive AI-generated responses via the Hugging Face Inference API.
+- 💬 **AI Chat **
+  - Send messages to Hogwarts AI.
+  - Receive AI-generated responses via the OpenRouter AI.
 
 - 🧠 **Movie Knowledge Quiz**
   - Answer 5 multiple-choice questions about different movies and cinematography.
@@ -42,7 +42,7 @@
 - Bootstrap 5
 - Requests (to fetch data from external APIs)
 - Slugify (to generate clean URL slugs)
-- Hugging Face Inference API (for AI chat functionality)
+- OpenRouter AI(for AI chat functionality)
 
 ## Setup Instructions 🧩
 
