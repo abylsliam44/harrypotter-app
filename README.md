@@ -154,6 +154,8 @@ Developed by Abylay Slamzhanov.
 
 Feel free to open an issue or submit a pull request to contribute to this project.
 
+Email: abylajslamzanov@gmail.com
+
 ---
 
 # 🎉 Enjoy exploring the magical world of Harry Potter!
