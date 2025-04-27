@@ -232,10 +232,23 @@ footer p {
     padding: 20px;
     margin-bottom: 20px;
     width: 250px;
+    height: 450px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center; 
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeIn 0.5s ease-in;
+}
+
+.characters-list img, .card img, #favorites-list div img {
+    width: 120px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 10px;
 }
 
 .characters-list li:hover, .card:hover, #favorites-list div:hover {
