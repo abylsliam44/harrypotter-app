@@ -20,27 +20,34 @@
 </form>
 
 <div class="characters-list">
-    {% for character in page_obj.object_list %}
-        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 250px; height: 450px; padding: 20px; border-radius: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); text-align: center;">
-            
-            {% if character.image %}
-                <img src="{{ character.image }}" alt="{{ character.name }}" style="width: 120px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
-            {% endif %}
+    {% if page_obj.object_list %}
+        {% for character in page_obj.object_list %}
+            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 250px; height: 450px; padding: 20px; border-radius: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); text-align: center;">
+                
+                {% if character.image %}
+                    <img src="{{ character.image }}" alt="{{ character.name }}" style="width: 120px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                {% endif %}
 
-            <div style="flex-grow: 1;">
-                <a href="{% url 'character_detail' character.name|slugify %}" style="display: block; font-weight: bold; margin-bottom: 8px; color: #4d2c5c; text-decoration: none;">
-                    {{ character.name }}
-                </a>
-                <p style="margin: 0;"><strong>House:</strong> {{ character.house|default:"Unknown" }}</p>
-                <p style="margin: 0;"><strong>Patronus:</strong> {{ character.patronus|default:"Unknown" }}</p>
+                <div style="flex-grow: 1;">
+                    <a href="{% url 'character_detail' character.name|slugify %}" style="display: block; font-weight: bold; margin-bottom: 8px; color: #4d2c5c; text-decoration: none;">
+                        {{ character.name }}
+                    </a>
+                    <p style="margin: 0;"><strong>House:</strong> {{ character.house|default:"Unknown" }}</p>
+                    <p style="margin: 0;"><strong>Patronus:</strong> {{ character.patronus|default:"Unknown" }}</p>
+                </div>
+
+                <button id="fav-{{ character.name }}" data-name="{{ character.name }}" onclick="toggleFavorite('{{ character.name }}')" class="btn btn-warning mt-2" style="margin-top: 10px;">
+                    ☆ Add to Favorites
+                </button>
             </div>
-
-            <button id="fav-{{ character.name }}" data-name="{{ character.name }}" onclick="toggleFavorite('{{ character.name }}')" class="btn btn-warning mt-2" style="margin-top: 10px;">
-                ☆ Add to Favorites
-            </button>
+        {% endfor %}
+    {% else %}
+        <div style="text-align: center; font-size: 1.5rem; margin-top: 50px; color: #555;">
+            Sorry, no characters found matching your search.
         </div>
-    {% endfor %}
+    {% endif %}
 </div>
+
 
 <div class="pagination mt-4 d-flex justify-content-center flex-wrap gap-2">
     {% if page_obj.has_previous %}
