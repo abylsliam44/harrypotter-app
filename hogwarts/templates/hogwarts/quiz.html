@@ -8,25 +8,24 @@
     <p class="text-center" style="font-size: 1.2rem; color: #555;">
         Test your knowledge about famous movies and cinema!
     </p>    
+
     <form method="POST" class="quiz-form">
         {% csrf_token %}
         
         {% for question in questions %}
+            {% with forloop.counter as q_number %}
             <div class="quiz-card">
-                <p class="question-text">{{ forloop.counter }}. {{ question.question|safe }}</p>
+                <p class="question-text">{{ q_number }}. {{ question.question|safe }}</p>
                 <div class="options">
-                    {% for option in question.incorrect_answers %}
+                    {% for option in question.all_answers %}
                         <label class="option-label">
-                            <input type="radio" name="q{{ forloop.counter }}" value="{{ option }}">
+                            <input type="radio" name="q{{ q_number }}" value="{{ option }}" required>
                             {{ option }}
                         </label>
                     {% endfor %}
-                    <label class="option-label">
-                        <input type="radio" name="q{{ forloop.counter }}" value="{{ question.correct_answer }}">
-                        {{ question.correct_answer }}
-                    </label>
                 </div>
             </div>
+            {% endwith %}
         {% endfor %}
 
         <div class="text-center mt-4">
@@ -59,6 +58,10 @@
         font-weight: bold;
         margin-bottom: 10px;
         color: #333;
+    }
+
+    .options {
+        margin-top: 10px;
     }
 
     .option-label {
