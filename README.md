@@ -106,7 +106,7 @@ hpotter_explorer/
 ## Design and Development
 
 The project was divided into several parts:
-- Setting up Django project and applications (hogwarts, core).
+- Setting up Django project and applications.
 - Creating models for Hogwarts houses and favorite characters.
 - Integrating external Harry Potter character API.
 - Developing character search and filter functionalities.
