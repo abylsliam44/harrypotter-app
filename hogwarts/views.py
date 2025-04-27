@@ -88,12 +88,9 @@ def chat_with_character(request, name):
 
     return render(request, 'hogwarts/chat.html', {'name': name})
 
-def quiz(request):
-    # Fetch 5 easy quiz questions from external API
-    url = "https://opentdb.com/api.php?amount=5&category=11&difficulty=easy&type=multiple"
-    response = requests.get(url)
-    questions = response.json()['results']
+import requests
 
+def quiz(request):
     if request.method == 'POST':
         answers = {
             'q1': request.POST.get('q1'),
@@ -102,12 +99,22 @@ def quiz(request):
             'q4': request.POST.get('q4'),
             'q5': request.POST.get('q5'),
         }
+        
+        questions = request.session.get('quiz_questions')
+        if questions is None:
+            return render(request, 'hogwarts/quiz_result.html', {'score': 0})  
 
         correct_answers = [q['correct_answer'] for q in questions]
-        
-        # Calculate score based on correct answers
-        score = sum([1 for i, ans in answers.items() if ans == correct_answers[int(i[-1])-1]])
+
+        score = sum([1 for i, ans in enumerate(answers.values()) if ans == correct_answers[i]])
 
         return render(request, 'hogwarts/quiz_result.html', {'score': score})
 
-    return render(request, 'hogwarts/quiz.html', {'questions': questions})
+    else:
+        url = "https://opentdb.com/api.php?amount=5&category=11&difficulty=easy&type=multiple"
+        response = requests.get(url)
+        questions = response.json()['results']
+
+        request.session['quiz_questions'] = questions
+
+        return render(request, 'hogwarts/quiz.html', {'questions': questions})
