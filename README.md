@@ -144,6 +144,16 @@ The project was divided into several parts:
   Source: [https://opentdb.com/](https://opentdb.com/)  
   Provides multiple-choice quiz questions used for the quiz feature.
 
+  ## Testing
+
+This project includes unit tests for key views and features.
+
+To run the tests locally:
+
+```bash
+python manage.py test hogwarts
+```
+
 ## License 📄
 
 This project is open-source and available for educational and non-commercial use.
