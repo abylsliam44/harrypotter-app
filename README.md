@@ -103,6 +103,17 @@ hpotter_explorer/
 ├── .gitignore          # Ignored files list
 └── README.md           # Project documentation
 ```
+## Design and Development
+
+The project was divided into several parts:
+- Setting up Django project and applications (hogwarts, core).
+- Creating models for Hogwarts houses and favorite characters.
+- Integrating external Harry Potter character API.
+- Developing character search and filter functionalities.
+- Implementing favorites feature with local storage.
+- Adding chat functionality via OpenRouter AI API.
+- Designing adaptive UI using Bootstrap 5.
+- Deploying to Render with PostgreSQL as a database.
 
 ## External APIs 📡
 
